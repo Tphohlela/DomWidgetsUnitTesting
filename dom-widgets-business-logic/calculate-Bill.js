@@ -1,37 +1,45 @@
-    function calculateBtnClicked(){
-        
-        var billString = billStringField.value;
-        
-        var billItems = billString.split(",");
-        
-        var billTotal = 0;
-        
-        for (var i=0;i<billItems.length;i++){
-            var billItem = billItems[i].trim();
-            if (billItem === "call"){
-                billTotal += 2.75;
-            }
-            else if (billItem === "sms"){
-                billTotal += 0.75;
-            }
+function calculateBill(){
+    var call=0;
+    var sms =0;
+    var totalBill=0;
+    var warningLevel =20;
+    var criticalLevel= 30;
+
+
+    function getBillItem(list){
+      var  data  = list.split(",");
+       for (var i=0;i<data.length;i++){
+            var item = data[i].trim();
+        if(item =='call'){
+            call += 2.75;
+            totalBill += 2.75;
         }
-        
-       
-        var roundedBillTotal = billTotal.toFixed(2);
-        theBillTotal.innerHTML = roundedBillTotal;
-        if (roundedBillTotal >= 30){
-            theBillTotal.classList.remove("warning");
-            theBillTotal.classList.add("danger");
+        else if (item == 'sms'){
+         sms += 0.75;
+         totalBill += 0.75;
         }
-    
-        else if (roundedBillTotal >= 20){
-            
-            theBillTotal.classList.remove("danger");
-            theBillTotal.classList.add("warning");
+    }
+}
+    function getBillTotal(){
+        return 'R' + totalBill;
+    }
+
+
+    function totallevel(){
+        if( totalBill >= warningLevel && totalBill < criticalLevel){
+            return 'warning';
         }
-        else{
-            theBillTotal.classList.remove("danger");
-            theBillTotal.classList.remove("warning");
-    
+        else if( totalBill >= criticalLevel) {
+            return 'danger';
         }
-      }  
+    }
+
+
+    return{
+        getBillItem,
+        getBillTotal,
+        totallevel
+    }
+}
+
+

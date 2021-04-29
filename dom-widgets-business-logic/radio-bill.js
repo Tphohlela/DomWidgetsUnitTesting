@@ -7,16 +7,16 @@ function radioBill(){
     var smsCostTotal2 = 0;
     
     
-    function setCallCost(callCost2){
-        theCallCost2 = callCost2;
+    function setCallCost(){
+        theCallCost2 = 2.75;
     }
 
         function getCallCost(){
             return theCallCost2;
 
         }
-        function setSmsCost(smsCost2){
-            theSmsCost2 = smsCost2;
+        function setSmsCost(){
+            theSmsCost2 = 0.75;
         }
     
 
@@ -25,16 +25,16 @@ function radioBill(){
         }
 
        
-        function setWarningLevel(warningLevel){
-            warningLevel2 = warningLevel ;
+        function setWarningLevel(){
+            warningLevel2 = 30 ;
         }
 
         function getWarningLevel(){
             return warningLevel2;
         }
 
-        function setCriticalLevel(criticalLevel){
-            criticalLevel2 = criticalLevel;
+        function setCriticalLevel(){
+            criticalLevel2 = 50;
         }
 
         function getCriticalLevel(){

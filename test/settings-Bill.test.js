@@ -1,4 +1,4 @@
-describe('Settings Bill factory function ', function(){
+describe('Testing Settings Bill factory function ', function(){
     describe('set values', function(){
     it('should be able to set the call cost', function(){
        let settingsBill = BillWithSettings();

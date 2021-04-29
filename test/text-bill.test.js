@@ -1,4 +1,4 @@
-describe('Text input bill factory function ', function(){
+describe('Testing Text input bill factory function ', function(){
     it('call cost should be set to 2.75', function(){
        let billText = textBill();
 

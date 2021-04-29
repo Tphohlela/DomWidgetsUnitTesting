@@ -1,29 +1,29 @@
-describe('Radio Bill factory function', function () {
+describe('Testing Radio Bill factory function', function () {
 
-    describe('set values', function () {
-        it('should be able to set call value', function () {
+  
+        it('call cost should be set to 2.75', function () {
             let billRadio = radioBill();
 
-            billRadio.setCallCost(2.75);
+            billRadio.setCallCost();
             assert.equal(2.75, billRadio.getCallCost());
 
 
         });
 
-        it('should be able to set sms value', function () {
+        it('sms cost should be set to 0.75', function () {
             let billRadio = radioBill();
 
-            billRadio.setSmsCost(0.75);
+            billRadio.setSmsCost();
             assert.equal(0.75, billRadio.getSmsCost());
 
 
         });
 
-        it('should be able to set both the sms and call cost', function () {
+        it('call cost should be set to 2.75 and sms cost should be set to 0.75', function () {
             let billRadio = radioBill();
 
-            billRadio.setCallCost(2.75);
-            billRadio.setSmsCost(0.75);
+            billRadio.setCallCost();
+            billRadio.setSmsCost();
 
             assert.equal(2.75, billRadio.getCallCost());
             assert.equal(0.75, billRadio.getSmsCost());
@@ -32,33 +32,30 @@ describe('Radio Bill factory function', function () {
         });
 
 
-        it('should be able to set the warning level', function () {
+        it('warning level should be set to 30', function () {
             let billRadio = radioBill();
 
-            billRadio.setWarningLevel(30);
+            billRadio.setWarningLevel();
             assert.equal(30, billRadio.getWarningLevel());
 
 
         });
 
 
-        it('should be able to set the critical level', function () {
+        it('critical level should be set to 50', function () {
             let billRadio = radioBill();
 
-            billRadio.setCriticalLevel(50);
+            billRadio.setCriticalLevel();
             assert.equal(50, billRadio.getCriticalLevel());
 
 
         });
 
-    });
-
-    describe('use values', function () {
         it("should be able to calculate the call cost for 2 calls at 2.75 each", function () {
 
             let billRadio = radioBill();
-            billRadio.setCallCost(2.75);
-            billRadio.setSmsCost(0.75);
+            billRadio.setCallCost();
+            billRadio.setSmsCost();
 
             billRadio.makeCall2();
             billRadio.makeCall2();
@@ -72,8 +69,8 @@ describe('Radio Bill factory function', function () {
         it("should be able to calculate the sms cost for 3 smses at 0.75 each", function () {
 
             let billRadio2 = radioBill();
-            billRadio2.setCallCost(2.75);
-            billRadio2.setSmsCost(0.75);
+            billRadio2.setCallCost();
+            billRadio2.setSmsCost();
 
             billRadio2.makeSms2();
             billRadio2.makeSms2();
@@ -88,8 +85,8 @@ describe('Radio Bill factory function', function () {
         it("should be able to calculate total of the sms cost for 3 smses at 0.75 each and call cost for 2 calls ", function () {
 
             let billRadio2 = radioBill();
-            billRadio2.setCallCost(2.75);
-            billRadio2.setSmsCost(0.75);
+            billRadio2.setCallCost();
+            billRadio2.setSmsCost();
 
             billRadio2.makeSms2();
             billRadio2.makeSms2();
@@ -105,19 +102,38 @@ describe('Radio Bill factory function', function () {
         });
 
 
-    });
+
 
     describe('testing warning level and critical level', function () {
 
-        it("should return a class name of 'warning' if warning level is reached", function () {
+        it("should return a class name of 'warning' if warning level,which is over 50, is reached", function () {
             let billRadio2 = radioBill();
+                
+            billRadio2.setSmsCost();
+            billRadio2.setCallCost();
 
-            billRadio2.setSmsCost(15);
-            billRadio2.setCallCost(20);
-            billRadio2.setWarningLevel(30);
-            billRadio2.setCriticalLevel(50);
+            billRadio2.setWarningLevel();
+            billRadio2.setCriticalLevel();
 
             billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
             billRadio2.makeCall2();
 
 
@@ -125,21 +141,62 @@ describe('Radio Bill factory function', function () {
             assert.equal("warning", billRadio2.colorRadio());
         });
 
-        it("should return a class name of 'danger' if warning level is reached", function () {
+        it("should return a class name of 'danger' if critical level,which is 50, is reached", function () {
             let billRadio2 = radioBill();
 
-            billRadio2.setSmsCost(30);
-            billRadio2.setCallCost(20);
-            billRadio2.setWarningLevel(30);
-            billRadio2.setCriticalLevel(50);
+            billRadio2.setSmsCost();
+            billRadio2.setCallCost();
+
+            billRadio2.setWarningLevel();
+            billRadio2.setCriticalLevel();
 
             billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+            billRadio2.makeSms2();
+
             billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+            billRadio2.makeCall2();
+
 
 
 
             assert.equal("danger", billRadio2.colorRadio());
         });
-    });
+
+
+});
 
 });
